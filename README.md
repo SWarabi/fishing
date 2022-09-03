@@ -1,24 +1,25 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# サイト名・fishingサイト/要件定義書
+fishingサイト
 
-Things you may want to cover:
 
-* Ruby version
+# 概要
 
-* System dependencies
+魚を釣りに行く際、どこで何が釣れるかがわかるコミュニティサイト
 
-* Configuration
 
-* Database creation
+## サイトテーマ
 
-* Database initialization
+釣りで坊主を防止し、適した道具を揃える
 
-* How to run the test suite
+## テーマを選んだ理由
 
-* Services (job queues, cache servers, search engines, etc.)
+釣りをする場合目的によって道具が大きく変わることがあります。そこで、どこで何が釣れるのか直近の情報を集めることで道具を正確に揃えられる。
 
-* Deployment instructions
+## ターゲットユーザー
 
-* ...
+釣りをする初心者からベテランまで
+
+## 主な活用シーン
+
+釣りに行く場所を決めるときや、地元では何が釣れているかなどの検索
