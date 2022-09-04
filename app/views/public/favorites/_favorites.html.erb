@@ -1,0 +1,9 @@
+<% if catch.favorited_by?(current_user) %>
+<%= link_to catch_favorites_path(catch), method: :delete, remote: true do %>
+♥<%= catch.favorites.count %>いいね
+<% end %>
+<% else %>
+<%= link_to catch_favorites_path(catch), method: :post, remote: true do %>
+♡<%= catch.favorites.count %>いいね
+<% end %>
+<% end %>

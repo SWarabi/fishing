@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Public::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [:create]
+   before_action :check_guest, only: %i[update destroy]
 
   # before_action :configure_account_update_params, only: [:update]
 
@@ -47,7 +48,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
    end
    
    def after_sign_up_path_for(resource)
-    fishing_path(resource)
+    public_fishings_path
    end
    
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,0 +1,36 @@
+<h1>投稿一覧</h1>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-6'>
+      <table class = "table table-bordered">
+        <% @catches.each do |catch| %>
+        
+        <tr>
+          <th>釣果</th>
+          <th><%= catch.fish %>
+          <% if catch.image.attached? %>
+          <%= image_tag catch.image, size: "200x200" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+          </th>
+          <th><%= catch.gear %></th>
+          <th><%= catch.day %>
+          <%= catch.time %></th>
+          <th>
+            <% if catch.comment == true %>
+            <%= catch.comment %>
+            <% else %>
+            <%= "コメントなし" %>
+            <% end %>
+            
+          </th>
+            <th id="favorite_buttons_<%= @catch.id %>">
+            <%= render "favorites/favorites", catch: @catch %>
+            </th>
+        </tr>
+        <% end %>
+      </table>
+    </die>
+  </die>
+</die>
