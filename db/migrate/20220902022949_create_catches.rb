@@ -7,6 +7,7 @@ class CreateCatches < ActiveRecord::Migration[6.1]
       t.date :day
       t.datetime :time
       t.text :comment
+      t.integer :user_id
       
       t.timestamps
     end

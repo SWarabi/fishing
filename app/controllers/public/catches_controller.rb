@@ -8,7 +8,7 @@ class Public::CatchesController < ApplicationController
     #データをデータベースに保存するためのsaveメソッド実行
     catch.save
     #index画面へリダイレクト
-    redirect_to '/catches'
+    redirect_to '/public/catches'
   end
   
   def index
@@ -20,6 +20,6 @@ class Public::CatchesController < ApplicationController
   
   private
   def catch_params
-    params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :comment)  
+    params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :comment, :user_id)  
   end
 end

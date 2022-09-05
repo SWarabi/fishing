@@ -25,8 +25,8 @@
             <% end %>
             
           </th>
-            <th id="favorite_buttons_<%= @catch.id %>">
-            <%= render "favorites/favorites", catch: @catch %>
+            <th id="favorite_buttons_<%= catch.id %>">
+            <%= render "public/favorites/favorites", catch: catch %>
             </th>
         </tr>
         <% end %>

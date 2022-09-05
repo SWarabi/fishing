@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :fishings
     resources :catches,only: [:new, :create, :index, :show, :destroy] do
+      resources :catch_comments, only: [:create]
       resource :favorites, only: [:create, :destroy]
     end
   end

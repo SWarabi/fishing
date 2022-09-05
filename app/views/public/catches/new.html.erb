@@ -1,6 +1,7 @@
 <h1>釣果</h1>
 
-<%= form_with model: @catch, url:'/catches' do |f| %>
+<%= form_with model: @catch, url:'/public/catches' do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 
   <h4>釣果</h4>
   <%= f.text_field :fish %><br>
