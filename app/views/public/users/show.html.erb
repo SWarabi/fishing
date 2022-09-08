@@ -1,13 +1,21 @@
-<h1>投稿一覧</h1>
+
+
+    
+<div class='container'>
+  <%= link_to "ユーザ情報編集", edit_public_user_path(current_user) %>
+</div>
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-6'>
+      <h1>投稿一覧</h1>
       <table class = "table table-bordered">
         <% @catches.each do |catch| %>
-        
+          <th><%= @user.name %></th>
         <tr>
-          
-          <th>釣果<%= catch.fish %>
+          <th>釣果・<%= catch.fish %></th>
+        </tr>
+        <tr>
+          <th>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
           <% else %>
@@ -35,13 +43,16 @@
             <% end %>
           </th>
         </tr>
+        <tr>
             <th id="favorite_buttons_<%= catch.id %>">
             <%= render "public/favorites/favorites", catch: catch %>
             </th>
+        </tr>
+        <tr>
             <th>
               <%= link_to "詳細", public_catch_path(catch.id) %>
             </th>
-       
+        </tr>
         <% end %>
       </table>
     </die>

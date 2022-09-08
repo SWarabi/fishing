@@ -1,0 +1,60 @@
+<h2>詳細</h2>
+<p>コメント件数：<%= @catch.catch_comments.count %></p>
+<table class = "table table-bordered">
+    <tr>
+        <th><label for="魚">魚</label></th>
+        <td><%= @catch.fish %></td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+        <% if @catch.image.attached? %>
+        <%= image_tag @catch.image, size: "200x200" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="道具">道具</label></th>
+        <td>
+            <%= @catch.gear %>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="場所">場所</label></th>
+        <td>
+            <%= @catch.point %>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="日にち・時間">日にち・時間</label></th>
+        <td>
+            <%= @catch.day %>
+            <%= @catch.time.strftime('%H時:%M分')  %>
+        </td>
+    </tr>
+    <tr>
+        <th><%= link_to "編集", edit_public_catch_path(@catch.id) %></th>
+        <td></td>
+    </tr>
+</table>
+
+<table class = "table table-bordered">
+    <tr>
+        <th></th>
+        <td>
+            <% @catch.catch_comments.each do |catch_comment| %>
+            <%= catch_comment.user.name %>
+            <%= catch_comment.comment %><br>
+            <% end %>
+        </td>
+    </tr>
+</table>
+<div>
+    
+  <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

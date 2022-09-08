@@ -16,6 +16,18 @@ class Public::CatchesController < ApplicationController
   end
   
   def show
+    @catch = Catch.find(params[:id])
+    @catch_comment = CatchComment.new
+  end
+  
+  def edit
+    @catch = Catch.find(params[:id])  
+  end
+  
+  def update
+    catch = Catch.find(params[:id])
+    catch.update(catch_params)
+    redirect_to public_catch_path(catch.id)  
   end
   
   private

@@ -1,0 +1,26 @@
+<div class='col-md-8 offset-md-1'>
+      <h2>ユーザ一覧</h2>
+      
+      <table class='table'>
+          <tr>
+            <th>名前</th>
+            <th>アドレス</th>
+            <th>詳細</th>
+          </tr>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= user.name %>
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+            <td>
+            <%= link_to "Show", admins_user_path(user.id) %>
+            </td>
+          </tr>
+          <% end %>
+      </table>
+  
+  
+  <%#= image_tag user.get_profile_image(100,100) %>

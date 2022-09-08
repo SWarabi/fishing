@@ -1,13 +1,23 @@
-<h1>投稿一覧</h1>
+
 <div class='container'>
+  <h4>
+    <%= link_to "ユーザーを削除する", admins_user_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  </h4>
+  <h4>
+    <%= link_to "ユーザーを停止・再開させる", edit_admins_user_path %>
+  </h4>
+  
   <div class=“row”>
     <div class='mx-auto col-lg-6'>
+      <h1>投稿一覧</h1>
       <table class = "table table-bordered">
         <% @catches.each do |catch| %>
-        
+          <th><%= @user.name %></th>
         <tr>
-          
-          <th>釣果<%= catch.fish %>
+          <th>釣果・<%= catch.fish %></th>
+        </tr>
+        <tr>
+          <th>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
           <% else %>
@@ -35,15 +45,21 @@
             <% end %>
           </th>
         </tr>
-            <th id="favorite_buttons_<%= catch.id %>">
-            <%= render "public/favorites/favorites", catch: catch %>
-            </th>
-            <th>
-              <%= link_to "詳細", public_catch_path(catch.id) %>
-            </th>
-       
+        <tr>
+          <th><%= link_to "投稿を削除する", admins_catch_path(catch.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
+        </tr>
+        
+        
         <% end %>
       </table>
+      <td>会員ステータス</td>
+      <tr>
+            <% if @user.is_deleted == true %>
+        <th class="text-secondary" ><strong>退会</strong></th>
+        <% else %>
+        <th class="text-success" ><strong>有効</strong></th>
+        <% end %>
+        </tr>
     </die>
   </die>
 </die>
