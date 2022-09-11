@@ -1,6 +1,6 @@
 class Catch < ApplicationRecord
    has_one_attached :image
-   has_many :favorites
+   has_many :favorites, dependent: :destroy
    belongs_to :user
    has_many :catch_comments, dependent: :destroy
    

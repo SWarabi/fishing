@@ -16,17 +16,24 @@ Rails.application.routes.draw do
   namespace :public do
     # resources :fishings
     get "/unsubscribe"=>"users#unsubscribe"
+    get '/search', to: 'searchs#search'
     patch "/withdrawal"=>"users#withdrawal"
-    resources :users
-    resources :catches,only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-      resources :catch_comments, only: [:create]
+    resources :catches, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      resources :catch_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+    end
+    resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      member do
+        get :favorites
+      end
     end
   end
   
   namespace :admins do
     resources :users
-    resources :catches,only: [:new, :create, :index, :show, :destroy, :edit, :update] 
+    resources :catches,only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      resources :catch_comments, only: [:destroy]
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

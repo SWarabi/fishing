@@ -1,0 +1,28 @@
+<table>
+    <thead>
+        <tr>
+            <th>投稿者名</th>
+            <th>タイトル</th>
+            <th>本文</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="catch">
+    <% catches.each do |catch| %>
+      <tr>
+        <td><%= catch.user.name %></td>
+        <td><%= catch.fish %></td>
+        <td><%= link_to "詳細", public_catch_path(catch) %></td>
+        <% if catch.user == current_user %>
+          <td><%= link_to "編集", edit_public_catch_path(catch) %></td>
+          <td><%= link_to "削除", public_catch_path(catch), method: :delete, remote: true %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

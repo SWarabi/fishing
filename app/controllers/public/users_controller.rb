@@ -21,8 +21,14 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
     redirect_to public_user_path(@user.id), notice: 'You have updated user successfully.'
     else
-    render :edit
+    render 'edit'
     end
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:catch_id)
+    @favorite_catches = Catch.find(favorites)
   end
   
   def withdrawal

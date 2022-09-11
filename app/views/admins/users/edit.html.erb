@@ -1,6 +1,39 @@
 <h3 class="mt-4"><strong><%= @user.name %>さんの会員情報編集</strong></h3>
-<%= form_with model: @user, url: admin_user_path(@user), method: :patch, local:true do |f| %>
+  <%= form_with model: @user, url: admins_user_path(@user), local:true do |f| %>
 <div class="mb-3">
   <table class="table table-bordered">
     <thead>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <tr>
+              <th><%= f.label :full_name, "氏名" %></th>
+              <td><%= f.text_field :name, class:"form-control", autofocus: true, autocomplete: "name" %></td>
+            </tr>
+          </div>
+        </div>
+        <div class="row">
+    <div class="col">
+      <tr>
+      <th><%= f.label :email, "メールアドレス" %></th>
+      <td><%= f.text_field :email, class:"form-control", autofocus: true, autocomplete: "email" %></td>
+      </tr>
+    </div>
+  </div>
+  <div class="mb-3">
+  <tr>
+    <th><%= f.label :is_deleted, "会員ステータス" %></th>
+    <td>
+      <%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効", value: false %>
+      <%= f.radio_button :is_deleted, true%>
+      <%= f.label :is_deleted, '停止', value: true %>
+    </td>
+  </tr>
+</div>
+<div class="mb-3">
+  <%= f.submit "変更を保存", class: "btn btn-success btn-block" %>
+</div>
+</div>
+
 <% end %>

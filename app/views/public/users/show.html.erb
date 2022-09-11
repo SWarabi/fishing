@@ -1,8 +1,9 @@
-
-
-    
+<%= render 'public/searchs/form' %>
 <div class='container'>
   <%= link_to "ユーザ情報編集", edit_public_user_path(current_user) %>
+</div>
+<div class='container'>
+  <%= link_to "いいね一覧", favorites_public_user_path(current_user) %>
 </div>
 <div class='container'>
   <div class=“row”>

@@ -6,6 +6,13 @@ class Public::CatchCommentsController < ApplicationController
     comment.save
     redirect_to public_catch_path(catch)
   end
+  
+  def destroy
+    @catch = Catch.find(params[:book_id])
+    comment = CatchComment.find_by(catch_id: params[:catch_id], id: params[:id])
+    comment.catch_id = @catch.id
+    comment.destroy
+  end
 
   private
 

@@ -1,0 +1,7 @@
+<% if @model == 'user' %>
+  <h3>【ユーザー】検索ワード：<%= @content %></h3>
+  <%= render 'public/users/index', users: @records %>
+<% else @model == 'catches' %>
+  <h3>【釣果】検索ワード：<%= @content %></h3>
+    <%= render 'public/catches/index', catches: @records %>
+<% end %>
