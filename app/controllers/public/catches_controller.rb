@@ -7,8 +7,10 @@ class Public::CatchesController < ApplicationController
     catch = Catch.new(catch_params)
     #データをデータベースに保存するためのsaveメソッド実行
     catch.save
-    #index画面へリダイレクト
+    #catches画面へリダイレクト
     redirect_to '/public/catches'
+    
+    
   end
   
   def index
@@ -35,3 +37,14 @@ class Public::CatchesController < ApplicationController
     params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :comment, :user_id)  
   end
 end
+
+# map = Map.new(map_params)
+#     if map.save
+      
+#       redirect_to :action => "/public/catches"
+#     else
+#       redirect_to :action => "/public/catches"
+#     end
+#     def map_params
+#     params.require(:map).permit(:address, :latitude, :longitude)
+#   end

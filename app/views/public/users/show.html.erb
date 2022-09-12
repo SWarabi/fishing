@@ -1,13 +1,17 @@
-<%= render 'public/searchs/form' %>
+<main>
 <div class='container'>
-  <%= link_to "ユーザ情報編集", edit_public_user_path(current_user) %>
+  <div class="mt-3">
+    <%= render 'public/searchs/form' %>
+    <div class='container'>
+      <%= link_to "ユーザ情報編集", edit_public_user_path(current_user) %><br>
+      <%= link_to "いいね一覧", favorites_public_user_path(current_user) %>
+    </div>
+  </div>
 </div>
-<div class='container'>
-  <%= link_to "いいね一覧", favorites_public_user_path(current_user) %>
-</div>
-<div class='container'>
+
+  <div class='container'>
   <div class=“row”>
-    <div class='mx-auto col-lg-6'>
+    <div class='mx-auto col-lg-7'>
       <h1>投稿一覧</h1>
       <table class = "table table-bordered">
         <% @catches.each do |catch| %>
@@ -31,17 +35,18 @@
           <th><%= catch.point %></th>
         </tr>
         <tr>
-          <th><%= catch.day %>
-          <%= catch.time %>
+          <th><%= catch.day.strftime('%Y年%m月%d日') %>
+          <%= catch.time.strftime('%H時%M分') %>
           </th>
         </tr>
         <tr>
           <th>
-            <% if catch.comment == true %>
-            <%= catch.comment %>
-            <% else %>
-            <%= "コメントなし" %>
-            <% end %>
+            コメント件数：<%= catch.catch_comments.count %>
+            <%# if catch.comment == true %>
+            <%#= catch.comment %>
+            <%# else %>
+            <%#= "コメントなし" %>
+            <%# end %>
           </th>
         </tr>
         <tr>
@@ -59,3 +64,15 @@
     </die>
   </die>
 </die>
+
+</main>
+
+<footer>
+  <div class='container mt-5'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+    		<p><%= link_to "釣果へ戻る", public_catches_path %></p>
+    	</div>
+    </div>
+  </div>
+</footer>

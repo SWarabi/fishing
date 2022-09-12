@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 2022_09_05_051702) do
     t.datetime "time"
     t.text "comment"
     t.integer "user_id"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

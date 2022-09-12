@@ -9,7 +9,14 @@ class CreateCatches < ActiveRecord::Migration[6.1]
       t.text :comment
       t.integer :user_id
       
+      t.string :address
+      t.float :latitude
+      t.float :longitude
+      
       t.timestamps
     end
+    
+    
+  
   end
 end
