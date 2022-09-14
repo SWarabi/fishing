@@ -44,17 +44,8 @@
   <%= f.submit '投稿' %>
   
 <% end %>
-
-
-  <script >
-      // function initMap(){
-      //   geocoder = new google.maps.Geocoder()
-      //   let map = new google.maps.Map(document.getElementById('map'), {
-      //   center: {lat: 35.681236, lng: 139.767125 },
-      //   zoom: 15
-      //   });
-      // }
-      let map
+<script >
+let map
 let geocoder
 
 function initMap(){
@@ -80,6 +71,9 @@ function initMap(){
               map: map,
               position: results[0].geometry.location
             });
+            let address = results[0].formatted_address.split(' ')
+            console.log(address[1]);
+            $('#catch_address').val(address[1])
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
     }

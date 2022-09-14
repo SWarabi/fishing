@@ -4,6 +4,9 @@ class Catch < ApplicationRecord
    belongs_to :user
    has_many :catch_comments, dependent: :destroy
    
+   geocoded_by :address;
+   after_validation :geocode
+   
    validates :fish,presence:true
    validates :gear,presence:true
    validates :day,presence:true

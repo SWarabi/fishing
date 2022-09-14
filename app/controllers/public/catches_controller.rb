@@ -1,6 +1,7 @@
 class Public::CatchesController < ApplicationController
   def new
     @catch = Catch.new  
+    @catches = Catch.all
   end
   
   def create
@@ -32,9 +33,18 @@ class Public::CatchesController < ApplicationController
     redirect_to public_catch_path(catch.id)  
   end
   
+  def map
+  # respond_to以下の記述によって、
+  # remote: trueのアクセスに対して、
+  # map.js.erbが変えるようになります。
+  respond_to do |format|
+    format.js
+      end
+  end
+  
   private
   def catch_params
-    params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :comment, :user_id)  
+    params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :address, :comment, :user_id)  
   end
 end
 

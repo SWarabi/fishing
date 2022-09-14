@@ -74,11 +74,17 @@
 <script >
       function initMap(){
         geocoder = new google.maps.Geocoder()
-        let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
-        zoom: 15
+            let map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+            zoom: 15
         });
+        let marker = new google.maps.Marker({
+            position: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+            map: map
+        })
       }
+      
+      
   </script>
  
    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
