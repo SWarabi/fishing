@@ -23,8 +23,6 @@
         </div>
         <%= form_with model: [:public ,@user] do |f| %>
         <%= f.text_field :email, autofocus: true, id:"user_address", placeholder:"名前"%>
-        <!--<label for="user_image">Image</label>-->
-        <%#= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
         <br>
         <label for="user_introduction">名前</label><br>
         <%= f.text_field  :name , autofocus: true, id:"user_name"%>

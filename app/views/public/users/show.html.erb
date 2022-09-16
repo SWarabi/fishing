@@ -1,7 +1,7 @@
 <main>
 <div class='container'>
   <div class="mt-3">
-    <%= render 'public/searchs/form' %>
+    <%#= render 'public/searchs/form' %>
     <div class='container'>
       <%= link_to "ユーザ情報編集", edit_public_user_path(current_user) %><br>
       <%= link_to "いいね一覧", favorites_public_user_path(current_user) %>
@@ -11,53 +11,50 @@
 
   <div class='container'>
   <div class=“row”>
-    <div class='mx-auto col-lg-7'>
+    <div class='mx-auto col-lg-12'>
       <h1>投稿一覧</h1>
       <table class = "table table-bordered">
+        <thead>
+    <tr>
+      <th>名前</th>
+      <th>釣果</th>
+      <th>道具</th>
+      <th>場所</th>
+      <th>日時</th>
+      <th>いいね</th>
+      <th>詳細</th>
+      <th>コメント件数</th>
+    </tr>
+  </thead>
         <% @catches.each do |catch| %>
-          <th><%= @user.name %></th>
-        <tr>
-          <th>釣果・<%= catch.fish %></th>
-        </tr>
-        <tr>
-          <th>
+        <tr align="center" valign="middle">
+          <td><%= @user.name %></td>
+          <td>釣果・<%= catch.fish %>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
           <% else %>
           <%= image_tag 'no_image', size: "200x200" %>
           <% end %>
-          </th>
-        </tr>
-        <tr>
-          <th><%= catch.gear %></th>
-        </tr>
-        <tr>
-          <th><%= catch.point %></th>
-        </tr>
-        <tr>
-          <th><%= catch.day.strftime('%Y年%m月%d日') %>
+          </td>
+          <td><%= catch.gear %></td>
+          <td><%= catch.point %></td>
+          <td><%= catch.day.strftime('%Y年%m月%d日') %>
           <%= catch.time.strftime('%H時%M分') %>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            コメント件数：<%= catch.catch_comments.count %>
+          </td>
+          <td id="favorite_buttons_<%= catch.id %>">
+            <%= render "public/favorites/favorites", catch: catch %>
+            </td>
+            <td>
+              <%= link_to "詳細", public_catch_path(catch.id) %>
+            </td>
+            <td>
+            <%= catch.catch_comments.count %>
             <%# if catch.comment == true %>
             <%#= catch.comment %>
             <%# else %>
             <%#= "コメントなし" %>
             <%# end %>
-          </th>
-        </tr>
-        <tr>
-            <th id="favorite_buttons_<%= catch.id %>">
-            <%= render "public/favorites/favorites", catch: catch %>
-            </th>
-        </tr>
-        <tr>
-            <th>
-              <%= link_to "詳細", public_catch_path(catch.id) %>
-            </th>
+          </td>
         </tr>
         <% end %>
       </table>
@@ -67,12 +64,5 @@
 
 </main>
 
-<footer>
-  <div class='container mt-5'>
-  	<div class='row'>
-    	<div class='mx-auto'>
-    		<p><%= link_to "釣果へ戻る", public_catches_path %></p>
-    	</div>
-    </div>
-  </div>
-</footer>
+<%= render "public/footers/footer" %>
+

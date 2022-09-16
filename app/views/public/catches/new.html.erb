@@ -1,49 +1,56 @@
-<h1>釣果</h1>
+<main>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-12'>
+      <h1>釣果投稿</h1>
+      <%= form_with model: @catch, url:'/public/catches' do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <p>
+        釣果
+        <%= f.text_field :fish %><br>
+      </p>
+      <p>
+        <%= f.file_field :image, accept: "image/*" %><br>
+      </p>
+      <p>
+        道具
+        <%= f.text_field :gear %><br>
+      </p>
+      <p>
+        場所
+        <%= f.text_field :point %><br>
+      </p>
+      <p>
+        日にち
+        <%= f.date_field :day %><br>
+      </p>
+      <p>
+        時間
+        <%= f.time_field :time %><br>
+      </p>
+      <p>
+        その他<br>
+        <%= f.text_area :comment %>
+      </p>
+      <!-- 追加部分 -->
+      <h3>釣行場所</h3>
+      <%= f.label :address, '場所' %>
+      <p><%= f.text_field :address, class: 'form-control' %></p>
+      <div class="map">
+        <!-- 地名入力用のinputを追加 -->
+        <input id="address" type="textbox" value="東京">
+        <!-- buttonをクリックしたらcodeAddressを実行　-->
+        <input type="button" value="検索" onclick="codeAddress()">
+        <div id="map" style='width:800px; height:600px;'>
+        </div>
+      </div>
+      <%= f.submit '投稿' %>
+      <% end %>
+    </die>
+  </die>
+</die>
+</main>
 
-<%= form_with model: @catch, url:'/public/catches' do |f| %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-
-  <h4>釣果</h4>
-  <%= f.text_field :fish %><br>
-  <%= f.file_field :image, accept: "image/*" %>
-  
-  <h4>道具</h4>
-  <%= f.text_field :gear %>
-  
-  <h4>場所</h4>
-  <%= f.text_field :point %>
-  
-  <h4>日にち</h4>
-  <%= f.date_field :day %>
-  <h4>時間</h4>
-  <%= f.time_field :time %>
-  
-  <h4>その他</h4>
-  <%= f.text_area :comment %>
-  <!-- 追加部分 -->
-  
-  <h3>釣行場所</h3>
-  
-  <%= f.label :address, '場所' %>
-  <%= f.text_field :address, class: 'form-control' %>
-  
-  
-  <div class="map">
-    
-    
-    <!-- 地名入力用のinputを追加 -->
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <!-- buttonをクリックしたらcodeAddressを実行　-->
-    <input type="button" value="Encode" onclick="codeAddress()">
-
-    
-    <div id="map" style='width:800px; height:600px;'>
-    </div>
-  </div>
-
-  <%= f.submit '投稿' %>
-  
-<% end %>
 <script >
 let map
 let geocoder
@@ -85,7 +92,7 @@ function initMap(){
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
   
 
-
+<%= render "public/footers/footer" %>
 
   <!--<input id="address" type="textbox" value="">-->
   <!--<input type="button" value="地図を検索" onclick="codeAddress()">-->

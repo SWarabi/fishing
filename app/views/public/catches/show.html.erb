@@ -1,90 +1,96 @@
-<h2>詳細</h2>
-<p>コメント件数：<%= @catch.catch_comments.count %></p>
-<table class = "table table-bordered">
-    <tr>
-        <th><label for="魚">魚</label></th>
-        <td><%= @catch.fish %></td>
-    </tr>
-    <tr>
-        <th>写真</th>
-        <td>
-        <% if @catch.image.attached? %>
-        <%= image_tag @catch.image, size: "200x200" %>
-        <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-        <% end %>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="道具">道具</label></th>
-        <td>
-            <%= @catch.gear %>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="場所">場所</label></th>
-        <td>
-            <%= @catch.point %>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="日にち・時間">日にち・時間</label></th>
-        <td>
-            <%= @catch.day %>
-            <%= @catch.time.strftime('%H時%M分')  %>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h3>釣行場所</h3>
-            <div class="map">
-                <div id="map" style='width:600px; height:400px;'>
-                </div>
-            </div>
-        </th>
-    </tr>
-    
-    <tr>
-        <th>投稿を編集</th>
-        <td><%= link_to "編集", edit_public_catch_path(@catch.id) %></td>
-    </tr>
-</table>
-
-<table class = "table table-bordered">
-    <% @catch.catch_comments.each do |catch_comment| %>
-    <tr>
-        <th>
-            <%= catch_comment.user.name %>
-        </th>
-        <td>
-            <%= catch_comment.comment %>
-        </td>
-    </tr>
-    <% end %>
-</table>
-
-<div>
-    
-  <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+<main>
+<div class='container'>
+    <div class=“row”>
+        <div class='mx-auto col-lg-14'>
+            <h2>詳細</h2>
+            <p>コメント件数：<%= @catch.catch_comments.count %></p>
+            <table class = "table table-bordered">
+                <tr>
+                    <td><label for="魚">魚</label></td>
+                    <td><%= @catch.fish %></td>
+                </tr>
+                <tr>
+                <td>写真</td>
+                <td>
+                    <% if @catch.image.attached? %>
+                    <%= image_tag @catch.image, size: "200x200" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "200x200" %>
+                    <% end %>
+                </td>
+                </tr>
+                <tr>
+                    <td><label for="道具">道具</label></td>
+                <td><%= @catch.gear %></td>
+                </tr>
+                <tr>
+                    <td><label for="場所">場所</label></td>
+                <td><%= @catch.point %></td>
+                </tr>
+                <tr>
+                    <td><label for="日にち・時間">日にち・時間</label></td>
+                <td>
+                    <%= @catch.day %>
+                    <%= @catch.time.strftime('%H時%M分')  %>
+                </td>
+                </tr>
+                <tr>
+                <td><h3>釣行場所</h3></td>
+                <td>
+                    <div class="map">
+                    <div id="map" style='width:600px; height:400px;'>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td>投稿を編集</td>
+                <td><%= link_to "編集", edit_public_catch_path(@catch.id) %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 
+
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-14'>
+        <table class = "table table-bordered">
+            <% @catch.catch_comments.each do |catch_comment| %>
+            <tr>
+                <th>
+                    <%= catch_comment.user.name %>
+                </th>
+                <td>
+                    <%= catch_comment.comment %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+        <div>
+            <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>
+            <%= f.text_area :comment, rows: '5',cols: '60', placeholder: "コメントをここに" %><br>
+            <%= f.submit "送信する" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+</main>
+<%= render "public/footers/footer" %>
+
 <script >
-      function initMap(){
-        geocoder = new google.maps.Geocoder()
-            let map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
-            zoom: 15
-        });
-        let marker = new google.maps.Marker({
-            position: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
-            map: map
-        })
-      }
-      
-      
-  </script>
- 
-   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+function initMap(){
+    geocoder = new google.maps.Geocoder()
+    let map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+        zoom: 15
+    });
+    let marker = new google.maps.Marker({
+        position: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+        map: map
+    })
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>

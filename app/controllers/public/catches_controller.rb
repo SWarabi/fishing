@@ -10,8 +10,6 @@ class Public::CatchesController < ApplicationController
     catch.save
     #catches画面へリダイレクト
     redirect_to '/public/catches'
-    
-    
   end
   
   def index

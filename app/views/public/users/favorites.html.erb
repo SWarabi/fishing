@@ -7,7 +7,6 @@
         <% @favorite_catches.each do |catch| %>
         
         <tr>
-          
           <th>釣果<%= catch.fish %>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
