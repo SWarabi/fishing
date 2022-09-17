@@ -24,12 +24,20 @@ class Public::SearchsController < ApplicationController
         User.where('name LIKE ?', '%'+content+'%')
       end
     # 選択したモデルがcatchだったら
-    elsif model == 'catch'
+    elsif model == 'fish'
       if method == 'perfect'
         Catch.where(fish: content)
       else
-        Catch.where('catch LIKE ?', '%'+content+'%')
+        Catch.where('fish LIKE ?', '%'+content+'%')
       end
+    
+    elsif model == 'address'
+      if method == 'perfect'
+        Catch.where(address: content)
+      else
+        Catch.where('address LIKE ?', '%'+content+'%')
+      end  
+    
     end
   end
   

@@ -3,6 +3,7 @@
     <div class=“row”>
         <div class='mx-auto col-lg-14'>
             <h2>詳細</h2>
+            
             <p>コメント件数：<%= @catch.catch_comments.count %></p>
             <table class = "table table-bordered">
                 <tr>
@@ -44,6 +45,10 @@
                 </td>
                 </tr>
                 <tr>
+                <tr>
+                <td><label for="その他">その他</label></td>
+                <td><%= @catch.comment %></td>
+                </tr>
                 <td>投稿を編集</td>
                 <td><%= link_to "編集", edit_public_catch_path(@catch.id) %></td>
                 </tr>

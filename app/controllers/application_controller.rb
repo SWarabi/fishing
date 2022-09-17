@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: 'ゲストユーザーは編集・削除できません。'
      end
    end
+   
 end

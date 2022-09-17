@@ -1,7 +1,12 @@
-<h2>会員登録</h2>
+<main>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-9'>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <h2>会員登録</h2>
   <table class = "table table-bordered">
       <tr>
         <th><%= f.label :メールアドレス %></th><br />
@@ -25,12 +30,12 @@
         <th><%= f.label :パスワード確認 %></th><br />
         <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
       </tr>
-      
-      <tr>
-        <th><%= f.submit "会員登録" %>
-        <% end %></th>
-      </tr>
-      <tr>
-        <th><%= render "devise/shared/links" %></th>
-      </tr>
+        
   </table>
+   <%= f.submit "会員登録" %>
+   <% end %>
+   <%= render "devise/shared/links" %>
+  </div>
+  </div>
+</div>
+</main>

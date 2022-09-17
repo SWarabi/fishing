@@ -1,6 +1,9 @@
 <main>
 <div class='container'>
   <h1>投稿編集画面</h1>
+  <% if @catch.user == current_user %>
+  <%= link_to "削除", public_catch_path(@catch), method: :delete %>
+  <% end %>
   <div class=“row”>
     <div class='mx-auto col-lg-12'>
 
@@ -56,6 +59,12 @@
           </div>
         </td>
     </tr>
+    <tr>
+        <th><label for="その他">その他</label></th>
+        <td>
+            <%= f.text_area:comment, rows: '5',cols: '60' %>
+        </td>
+    </tr>
     
     <tr>
         <td><%= f.submit '保存' %></td>
@@ -107,7 +116,7 @@ function initMap(){
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
   
 
-<%= render "public/footers/footer" %>
+
   
  
        

@@ -15,20 +15,24 @@
   <div class='container'>
     <div class='row'>
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h2>User info</h2>
-        <%= link_to "退会する", public_unsubscribe_path, class:"btn btn-danger btn-block", data: { confilm: "本当に退会しますか？" } %>
+        <h2>ユーザー情報</h2>
+        
        
-        <div class="form-group">
+        <div class = btn-dange >
           <label for="user_name">メールアドレス</label>
         </div>
         <%= form_with model: [:public ,@user] do |f| %>
-        <%= f.text_field :email, autofocus: true, id:"user_address", placeholder:"名前"%>
+        <%= f.text_field :email, autofocus: true, id:"user_address", placeholder:"名前"%>  
         <br>
         <label for="user_introduction">名前</label><br>
+        <p>
         <%= f.text_field  :name , autofocus: true, id:"user_name"%>
-        <br>
+        </p>
+        <p>
         <%= f.submit "保存" %>
+        </p>
         <% end %>
+        <%= link_to "退会する", public_unsubscribe_path, class:"btn btn-danger btn-block", data: { confilm: "本当に退会しますか？" } %>
       </div>
     </div>
   </div>

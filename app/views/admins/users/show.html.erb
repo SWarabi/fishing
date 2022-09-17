@@ -15,46 +15,47 @@
         
   
   <div class=“row”>
-    <div class='mx-auto col-lg-6'>
+    <div class='mx-auto col-lg-12'>
       <h1>投稿一覧</h1>
-      <table class = "table table-bordered">
+      
         <% @catches.each do |catch| %>
-          <th><%= @user.name %></th>
+        <table class = "table table-bordered">
         <tr>
-          <th>釣果・<%= catch.fish %></th>
-        </tr>
-        <tr>
-          <th>
+          <td><%= @user.name %></td>
+          <td>釣果・<%= catch.fish %></td>
+          <td>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
           <% else %>
           <%= image_tag 'no_image', size: "200x200" %>
           <% end %>
-          </th>
-        </tr>
-        <tr>
-          <th><%= catch.gear %></th>
-        </tr>
-        <tr>
-          <th><%= catch.point %></th>
-        </tr>
-        <tr>
-          <th><%= catch.day %>
+          </td>
+          <td><%= catch.gear %></td>
+          <td><%= catch.point %></td>
+          <td><%= catch.day %>
           <%= catch.time %>
-          </th>
+          </td>
+          <td><%= link_to "投稿を削除する", admins_catch_path(catch.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
-        
-          <th><%= link_to "投稿を削除する", admins_catch_path(catch.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
-        </tr>
-        <% catch.catch_comments.each do |catch_comment| %>
+      </table>
+      
+      <%#= if catch.catch_comments.count=true %>
+      <h4>コメント</h4>
+      <%# else %>
+      <%# end %>
+      
+      <% catch.catch_comments.each do |catch_comment| %>
+      <table class = "table table-bordered">
         <tr>
-          <th><%= catch_comment.user.name %></th>
+          <td><%= catch_comment.user.name %></td>
           <td><%= catch_comment.comment %></td>
-          <th><%= link_to "コメントを削除する", admins_catch_catch_comment_path(catch.id, catch_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
+          <td><%= link_to "コメントを削除する", admins_catch_catch_comment_path(catch.id, catch_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
         <% end %>
+         
       <% end %>
-    </table>
+   </table>
+    
     </die>
   </die>
 </die>

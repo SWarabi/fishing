@@ -9,7 +9,7 @@ class User < ApplicationRecord
     has_many :catch_comments, dependent: :destroy
     
     def self.guest    
-      find_or_create_by!(email: 'guest@example.com') do |user|
+      find_or_create_by!(email: 'guest@example.com',name: 'ゲスト') do |user|
       user.password = SecureRandom.urlsafe_base64
       #ゲストユーザー作成
       #user.confirmed_at = Time.now 

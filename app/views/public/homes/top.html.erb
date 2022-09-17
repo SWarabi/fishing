@@ -1,10 +1,20 @@
 <div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1>welcome to <i class="fas fa-book"></i><strong>fishing</strong>  !!</h1>
-      <p>魚を釣る  <i class="fas fa-book"></i><strong>ポイント</strong>, </p>
-      <p>魚を釣った場所や時間などのコミュニティサイトです</p>
-      <p> </p>
+      
+        <% if user_signed_in? %>
+        <h1>top </h1>
+        <p>魚を釣るためのコミュニティサイト </p>
+        <p>地元など釣れた魚の共有と記録の保存</p>
+        <p> </p>
+        <div class="row">
+          <%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <% else %>
+        <h1>welcome to <i class="fas fa-book"></i><strong>fishing</strong>  !!</h1>
+        <p>魚を釣るためのコミュニティサイト </p>
+        <p>地元など釣れた魚の共有と記録の保存</p>
+        <p> </p>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
           <%= link_to 'ログイン',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
@@ -13,8 +23,10 @@
           <%= link_to '会員登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up" %>
         </div>
         <div class="row">
-          <%= link_to 'ゲストユーザ（閲覧用）', users_guest_sign_in_path, method: :post , class: "btn btn-success btn-sm btn-block sign_up" %>
+          <%= link_to 'ゲストユーザ（閲覧用）', users_guest_sign_in_path, method: :post , class: "btn btn-dark btn-sm btn-block sign_up" %>
         </div>
+        <% end %>
+        <end>
       </div>
     </div>
   </div>

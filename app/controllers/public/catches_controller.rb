@@ -22,7 +22,12 @@ class Public::CatchesController < ApplicationController
   end
   
   def edit
-    @catch = Catch.find(params[:id])  
+    @catch = Catch.find(params[:id])
+    if @catch.user_id == current_user.id
+      render :edit
+    else
+      redirect_to public_catch_path
+    end
   end
   
   def update
@@ -38,6 +43,12 @@ class Public::CatchesController < ApplicationController
   respond_to do |format|
     format.js
       end
+  end
+  
+  def destroy
+    catch = Catch.find(params[:id])
+    catch.destroy
+    redirect_to public_user_path(current_user.id)
   end
   
   private

@@ -41,10 +41,15 @@
         <input id="address" type="textbox" value="東京">
         <!-- buttonをクリックしたらcodeAddressを実行　-->
         <input type="button" value="検索" onclick="codeAddress()">
+        <p>
         <div id="map" style='width:800px; height:600px;'>
+        
         </div>
+        </p>
       </div>
-      <%= f.submit '投稿' %>
+      
+      <%= f.submit '投稿',style: 'width:200px; height:40px; ' %>
+      </p>
       <% end %>
     </die>
   </die>
@@ -92,7 +97,7 @@ function initMap(){
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
   
 
-<%= render "public/footers/footer" %>
+<%#= render "public/footers/footer" %>
 
   <!--<input id="address" type="textbox" value="">-->
   <!--<input type="button" value="地図を検索" onclick="codeAddress()">-->
