@@ -49,8 +49,8 @@
                 <td><label for="その他">その他</label></td>
                 <td><%= @catch.comment %></td>
                 </tr>
-                <td>投稿を編集</td>
-                <td><%= link_to "編集", edit_public_catch_path(@catch.id) %></td>
+                <td>削除する</td>
+                <td><%= link_to "投稿を削除する", admins_catch_path(@catch.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
                 </tr>
             </table>
         </div>
@@ -66,15 +66,11 @@
             <tr>
                 <td>ユーザー・<%= catch_comment.user.name %></td>
                 <td><%= catch_comment.comment %></td>
+                <td><%= link_to "コメントを削除する", admins_catch_catch_comment_path(@catch.id, catch_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
             </tr>
             <% end %>
         </table>
-        <div>
-            <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>
-            <%= f.text_area :comment, rows: '5',cols: '60', placeholder: "コメントをここに" %><br>
-            <%= f.submit "送信する" %>
-            <% end %>
-        </div>
+        
     </div>
 </div>
 </main>

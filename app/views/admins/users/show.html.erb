@@ -40,12 +40,18 @@
       </table>
       
       <%#= if catch.catch_comments.count=true %>
-      <h4>コメント</h4>
+      
       <%# else %>
       <%# end %>
+      <table class='table'>
+          <tr>
+            <th>名前</th>
+            <th>コメント</th>
+            <th>詳細</th>
+          </tr>
       
       <% catch.catch_comments.each do |catch_comment| %>
-      <table class = "table table-bordered">
+      
         <tr>
           <td><%= catch_comment.user.name %></td>
           <td><%= catch_comment.comment %></td>

@@ -36,8 +36,7 @@ class Public::SearchsController < ApplicationController
         Catch.where(address: content)
       else
         Catch.where('address LIKE ?', '%'+content+'%')
-      end  
-    
+      end
     end
   end
   
