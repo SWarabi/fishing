@@ -16,14 +16,16 @@
           </tr>
         </thead>
         <% @catches.each do |catch| %>
-        <tr>
+        <tr align="center" valign="middle">
           <td><%= catch.user.name %></td>
-          <td>釣果・<%= catch.fish %>
+          <td>
           <% if catch.image.attached? %>
           <%= image_tag catch.image, size: "200x200" %>
           <% else %>
           <%= image_tag 'no_image', size: "200x200" %>
           <% end %>
+          <br>
+          <%= catch.fish %>
           </td>
           <td><%= catch.gear %></td>
           <td><%= catch.point %></td>

@@ -1,79 +1,66 @@
 <main>
-<div class='container'>
-  <h1>投稿編集画面</h1>
-  <% if @catch.user == current_user %>
-  <%= link_to "削除", public_catch_path(@catch), method: :delete %>
-  <% end %>
-  <div class=“row”>
-    <div class='mx-auto col-lg-12'>
-
-<%= form_with model: @catch, url: public_catch_path(@catch.id), method: :patch do |f| %>
-<table class = "table table-bordered">
-  <tr>
-    <th><label for="釣果">釣果</label></th>
-    <td><%= f.text_field :fish %></td>
-  </tr>
-  <tr>
-    <th>
-      <% if @catch.image.attached? %>
-      <%= image_tag @catch.image, size: "200x200" %>
-      <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-    </th>
-    <td>
-      <%= f.file_field :image, accept: "image/*" %>
-    </td>
-  </tr>
-     <tr>
-        <th><label for="道具">道具</label></th>
-        <td>
-            <%= f.text_field:gear %>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="場所">場所</label></th>
-        <td>
-            <%= f.text_field:point %>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="日にち・時間">日にち・時間</label></th>
-        <td>
-            <%= f.date_field :day %>
-            <%= f.time_field :time %>
-        </td>
-    </tr>
-    <tr>
-        <td><h3>釣行場所</h3></td>
-        <td>
-          <%= f.label :address, '場所' %>
-          <p><%= f.text_field :address, class: 'form-control' %></p>
-          <div class="map">
-          <!-- 地名入力用のinputを追加 -->
-          <input id="address" type="textbox" value="">
-          <!-- buttonをクリックしたらcodeAddressを実行　-->
-          <input type="button" value="検索" onclick="codeAddress()">
-          <div id="map" style='width:800px; height:600px;'>
-          </div>
-          </div>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="その他">その他</label></th>
-        <td>
-            <%= f.text_area:comment, rows: '5',cols: '60' %>
-        </td>
-    </tr>
-    
-    <tr>
-        <td><%= f.submit '保存' %></td>
-    </tr>
-<% end %>
-</table>
-</div>
-</div>
-</div>
+  <div class='container'>
+    <h1>投稿編集画面</h1>
+    <% if @catch.user == current_user %>
+    <%= link_to "削除", public_catch_path(@catch), method: :delete %>
+    <% end %>
+      <div class=“row”>
+        <div class='mx-auto col-lg-12'>
+          <%= form_with model: @catch, url: public_catch_path(@catch.id), method: :patch do |f| %>
+          <table class = "table table-bordered">
+            <tr>
+              <th><label for="釣果">釣果</label></th>
+              <td><%= f.text_field :fish %></td>
+            </tr>
+            <tr>
+              <th>
+                <% if @catch.image.attached? %>
+                <%= image_tag @catch.image, size: "200x200" %>
+                <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+                <% end %>
+              </th>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+              </tr>
+            <tr>
+              <th><label for="道具">道具</label></th>
+              <td><%= f.text_field:gear %></td>
+            </tr>
+            <tr>
+              <th><label for="場所">場所</label></th>
+              <td><%= f.text_field:point %></td>
+            </tr>
+            <tr>
+              <th><label for="日にち・時間">日にち・時間</label></th>
+              <td>
+                <%= f.date_field :day %>
+                <%= f.time_field :time %>
+              </td>
+            </tr>
+            <tr>
+              <td><h3>釣行場所</h3></td>
+              <td><%= f.label :address, '場所' %>
+              <p><%= f.text_field :address, class: 'form-control' %></p>
+              <div class="map">
+                <!-- 地名入力用のinputを追加 -->
+                <input id="address" type="textbox" value="">
+                <!-- buttonをクリックしたらcodeAddressを実行　-->
+                <input type="button" value="検索" onclick="codeAddress()">
+                <div id="map" style='width:800px; height:600px;'>
+                </div>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <th><label for="その他">その他</label></th>
+              <td><%= f.text_area:comment, rows: '5',cols: '60' %></td>
+            </tr>
+            <tr><td><%= f.submit '保存' %></td></tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+  </div>
 </main>
 <script >
 let map
@@ -114,16 +101,7 @@ function initMap(){
     }
   });
 }
-      
-  </script>
+</script>
   
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
   
-
-
-  
- 
-       
-        
-   
-    

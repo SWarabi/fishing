@@ -5,11 +5,14 @@ class Public::CatchesController < ApplicationController
   end
   
   def create
-    catch = Catch.new(catch_params)
+    @catch = Catch.new(catch_params)
     #データをデータベースに保存するためのsaveメソッド実行
-    catch.save
-    #catches画面へリダイレクト
-    redirect_to '/public/catches'
+    if @catch.save
+      redirect_to '/public/catches'
+    else
+      render :new
+    end  
+    
   end
   
   def index

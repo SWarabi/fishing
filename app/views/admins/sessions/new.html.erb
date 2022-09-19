@@ -1,7 +1,8 @@
-<div class='container'>
-  <div class=“row”>
-    <div class='mx-auto col-lg-12'>
-      <h2>ログイン</h2>
+<main>
+  <div class='container'>
+    <div class=“row”>
+      <div class='mx-auto col-lg-9'>
+      <h2>管理者ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :メールアドレス %><br />
@@ -20,3 +21,4 @@
     </div>
   </div>
 </div>
+</main>

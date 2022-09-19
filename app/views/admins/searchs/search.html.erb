@@ -1,0 +1,10 @@
+<% if @model == 'user' %>
+  <h3>【ユーザー】検索ワード：<%= @content %></h3>
+  <%= render 'admins/users/index', users: @records %>
+<% elsif @model == 'fish' %>
+  <h3>【釣果】検索ワード：<%= @content %></h3>
+    <%= render 'admins/catches/index', catches: @records %>
+<% elsif @model == 'address' %>
+  <h3>【場所】検索ワード：<%= @content %></h3>
+    <%= render 'admins/catches/index', catches: @records %>
+<% end %>

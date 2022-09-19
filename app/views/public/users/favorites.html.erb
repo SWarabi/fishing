@@ -1,48 +1,46 @@
 <main>
-<div class='container'>
-  <h1>いいね一覧</h1>
-  <div class=“row”>
-    <div class='mx-auto col-lg-12'>
-      <table class = "table table-bordered">
-        <thead>
-    <tr>
-      <th>名前</th>
-      <th>釣果</th>
-      <th>道具</th>
-      <th>場所</th>
-      <th>日時</th>
-      <th>いいね</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-      
-        <% @favorite_catches.each do |catch| %>
-        
-        <tr>
-          <td><%= catch.user.name %></td>
-          <td>釣果・<%= catch.fish %>
-          <% if catch.image.attached? %>
-          <%= image_tag catch.image, size: "200x200" %>
-          <% else %>
-          <%= image_tag 'no_image', size: "200x200" %>
-          <% end %>
-          </td>
-          <td><%= catch.gear %></td>
-          <td><%= catch.point %></td>
-          <td><%= catch.day.strftime('%Y年%m月%d日') %>
-          <%= catch.time.strftime('%H時%M分') %>
-          </td>
+  <div class='container'>
+    <h1>いいね一覧</h1>
+    <div class=“row”>
+      <div class='mx-auto col-lg-12'>
+        <table class = "table table-bordere">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>釣果</th>
+              <th>道具</th>
+              <th>場所</th>
+              <th>日時</th>
+              <th>いいね</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+          <% @favorite_catches.each do |catch| %>
+            <tr align="center" valign="middle">
+              <td><%= catch.user.name %></td>
+              <td>
+              <% if catch.image.attached? %>
+              <%= image_tag catch.image, size: "200x200" %>
+              <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+              <br>
+              <%= catch.fish %>
+              </td>
+              <td><%= catch.gear %></td>
+              <td><%= catch.point %></td>
+              <td><%= catch.day.strftime('%Y年%m月%d日') %>
+                <%= catch.time.strftime('%H時%M分') %>
+              </td>
           
-          <td id="favorite_buttons_<%= catch.id %>">
-          <%= render "public/favorites/favorites", catch: catch %>
-          </td>
-          <td>
-            <%= link_to "詳細", public_catch_path(catch.id) %>
-          </td>
-       </tr>
-        <% end %>
-      </table>
+              <td id="favorite_buttons_<%= catch.id %>">
+                <%= render "public/favorites/favorites", catch: catch %>
+              </td>
+              <td><%= link_to "詳細", public_catch_path(catch.id) %></td>
+            </tr>
+            <% end %>
+        </table>
+      </die>
     </die>
   </die>
-</die>
 </main>
