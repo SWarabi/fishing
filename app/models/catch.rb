@@ -11,7 +11,7 @@ class Catch < ApplicationRecord
    validates :gear,presence:true
    validates :day,presence:true
    validates :time,presence:true
-   validates :point,presence:true
+   #validates :point,presence:true
    
    def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

@@ -51,7 +51,7 @@
           <p><%= f.text_field :address, class: 'form-control' %></p>
           <div class="map">
           <!-- 地名入力用のinputを追加 -->
-          <input id="address" type="textbox" value="東京">
+          <input id="address" type="textbox" value="">
           <!-- buttonをクリックしたらcodeAddressを実行　-->
           <input type="button" value="検索" onclick="codeAddress()">
           <div id="map" style='width:800px; height:600px;'>
@@ -84,9 +84,13 @@ function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.681236, lng: 139.767125 },
+  center:  {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
   zoom: 15
   });
+  let marker = new google.maps.Marker({
+        position: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+        map: map
+    })
 }
       
       function codeAddress(){
