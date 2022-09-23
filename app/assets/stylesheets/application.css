@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.back {
+  background-image: url(/images/back.jpeg);
+  height: 100%;
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.back-table{
+  background-color: #d3d3d3;
+  margin-bottom: 0px !important;
+}
+.top{
+  padding-top: 10px;
+  background-color: #00bfff;
+}

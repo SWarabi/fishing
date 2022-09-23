@@ -9,10 +9,14 @@
 
 
 <main>
+  <div class='container'>
+    <h1><%= image_tag 'fishing.png', size: "100x100" %>釣果投稿</h1>
+  </div>
+  <div class='back'>
+  
 <div class='container'>
   <div class=“row”>
-    <div class='mx-auto col-lg-12'>
-      <h1>釣果投稿</h1>
+    <div class='mx-auto col-lg-12 back-table'>
       <%= form_with model: @catch, url:'/public/catches' do |f| %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <p>
@@ -58,12 +62,13 @@
         </p>
       </div>
       
-      <%= f.submit '投稿',style: 'width:200px; height:40px; ' %>
+      <%= f.submit '投稿',style: 'width:200px; height:40px; ,my-30px;' %>
       </p>
       <% end %>
     </die>
   </die>
 </die>
+</div>
 </main>
 
 <script >

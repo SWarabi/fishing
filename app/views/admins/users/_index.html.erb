@@ -1,0 +1,12 @@
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-12'>
+      <h1>ユーザーに遷移</h1>
+      <% users.each do |user| %>
+      <%= link_to public_user_path(user) do %>
+      <%= user.name %><br>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

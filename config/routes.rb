@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admins do
+    get '/search', to: 'searchs#search'
     resources :users,only: [:new, :create, :index, :show, :destroy, :edit, :update]
     resources :catches,only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :catch_comments, only: [:destroy]

@@ -16,11 +16,13 @@ class Public::CatchesController < ApplicationController
   end
   
   def index
-     @catches = Catch.all
+    # @catches = Catch.all
+     @catches = Catch.page(params[:page])
   end
   
   def show
     @catch = Catch.find(params[:id])
+    
     @catch_comment = CatchComment.new
   end
   

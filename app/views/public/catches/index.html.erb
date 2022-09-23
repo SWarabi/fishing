@@ -1,9 +1,15 @@
-<main>
+
+<main class='background'>
   <div class='container'>
-    <h1>投稿一覧</h1>
+    <h1><%= image_tag 'fishing.png', size: "100x100" %>投稿一覧</h1>
+  </div>
+  <div class='back'>
+  <div class='container'>
+    
+    
     <div class=“row”>
       <div class='mx-auto col-lg-12'>
-        <table class = "table table-bordered">
+        <table class = "table table-bordered back-table">
           <thead>
             <tr>
               <th>名前</th>
@@ -39,9 +45,11 @@
             </td>
             <td><%= link_to "詳細", public_catch_path(catch.id) %></td>
           </tr>
+          
           <% end %>
         </table>
       </div>
     </div>
   </div>
+  <%= paginate @catches %>
 </main>

@@ -1,19 +1,27 @@
 <header role="banner">
-		  <p class="text-center">
+		  <p class="text-center top">
 		    
 		    <div class="text-nowrap border-white d-flex text-right mx-auto col-lg-12" style="color:black; width:800px; height:40px;">
 		      <% if user_signed_in? %>
 		      ログインユーザー:<%=link_to current_user.name, public_user_path(current_user) %>
+		      <% elsif admin_signed_in? %>
+		      検索
+		      <%= render 'admins/searchs/form', class:"text-right" %>
           <% end %>
           <div class="text-nowrap border-white d-flex text-right mx-auto col-lg-12" style="color:black;">
             <%= render 'public/searchs/form', class:"text-right" %>
+            
           </div>
         </div>
         
 		  </p>
-  
+		  
 <!--<header class="shadow-sm">-->
+
   <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:black;">
+    <div class="text-left">
+         <%= image_tag 'maguro.png', size: "50x50" %>
+    </div>
     <div class="container">
       <!--<a class="navbar-brand" href="/">-->
         <%#= image_tag'nagnocake.jpg', size:"100x100" %>
@@ -23,8 +31,12 @@
        </button>
     </div>
     
+     
+    
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        
         <ul class="navbar-nav ml-auto">
+          
         <!--customerログイン後のヘッダー-->
         <% if user_signed_in? %>
           

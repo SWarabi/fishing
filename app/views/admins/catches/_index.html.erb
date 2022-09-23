@@ -1,0 +1,39 @@
+<main>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-12'>
+      <table class = "table table-bordered">
+<table>
+    <thead>
+        <tr>
+            <th>投稿者名</th>
+            <th>釣果</th>
+            <th>道具</th>
+            <th>場所</th>
+            <th>日時</th>
+            <th>詳細へ遷移</th>
+            
+        </tr>
+    </thead>
+    <tbody id="catch">
+    <% catches.each do |catch| %>
+    
+      <tr>
+        <td><%= catch.user.name %></td>
+        <td><%= catch.fish %></td>
+        <td><%= catch.gear %></td>
+        <td><%= catch.point %></td>
+        <td>
+            <%= catch.day.strftime('%Y年%m月%d日') %>
+            <%= catch.time.strftime('%H時%M分') %>
+          </td>
+        <td><%= link_to "詳細", admins_catch_path(catch) %></td>
+       
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</main>
