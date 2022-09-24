@@ -26,9 +26,10 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     
+    resources :favorites, only: [:index]
+    
     resources :followers, only: :show
     resources :followings, only: :show
-    
     resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       #フォローフォロワー
       resource :relationships, only: [:create, :destroy]
