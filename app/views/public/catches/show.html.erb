@@ -1,60 +1,68 @@
-<main>
-<div class='container'>
-    <div class=“row”>
+<main class='background'>
+  <div class='container'>
+    <h1>
+      <%= image_tag 'fishing.png', size: "100x100" %>詳細
+    </h1>
+  </div>
+  <div class='back'>
+    <div class='container'>
+      <div class=“row”>
         <div class='mx-auto col-lg-14'>
-            <h2>詳細</h2>
-            
-            <p>コメント件数：<%= @catch.catch_comments.count %></p>
-            <table class = "table table-bordered">
-                <tr>
-                    <td><label for="魚">魚</label></td>
-                    <td><%= @catch.fish %></td>
-                </tr>
-                <tr>
-                <td>写真</td>
-                <td>
-                    <% if @catch.image.attached? %>
-                    <%= image_tag @catch.image, size: "200x200" %>
-                    <% else %>
-                    <%= image_tag 'no_image.jpg', size: "200x200" %>
-                    <% end %>
-                </td>
-                </tr>
-                <tr>
-                    <td><label for="道具">道具</label></td>
-                <td><%= @catch.gear %></td>
-                </tr>
-                <tr>
-                    <td><label for="場所">場所</label></td>
-                <td><%= @catch.point %></td>
-                </tr>
-                <tr>
-                    <td><label for="日にち・時間">日にち・時間</label></td>
-                <td>
-                    <%= @catch.day %>
-                    <%= @catch.time.strftime('%H時%M分')  %>
-                </td>
-                </tr>
-                <tr>
-                <td><h3>釣行場所</h3></td>
-                <td>
-                    <div class="map">
-                    <div id="map" style='width:600px; height:400px;'>
-                    </div>
-                    </div>
-                </td>
-                </tr>
-                <tr>
-                <tr>
+          <h4 class='pull-right col-lg-3 text-center text-light bg-secondary'>
+            コメント件数：<%= @catch.catch_comments.count %>
+          </h4>
+          <table class = "table table-bordered back-table">
+            <tr>
+              <td><label for="魚">魚</label></td>
+              <td><%= @catch.fish %></td>
+            </tr>
+            <tr>
+              <td>写真</td>
+              <td>
+                <% if @catch.image.attached? %>
+                <%= image_tag @catch.image, size: "200x200" %>
+                <% else %>
+                <%= image_tag 'no_image.jpg', size: "200x200" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="道具">道具</label></td>
+              <td><%= @catch.gear %></td>
+            </tr>
+            <tr>
+              <td><label for="場所">場所</label></td>
+              <td><%= @catch.point %></td>
+            </tr>
+            <tr>
+              <td><label for="日にち・時間">日にち・時間</label></td>
+              <td>
+                <%= @catch.day %>
+                <%= @catch.time.strftime('%H時%M分')  %>
+              </td>
+            </tr>
+            <tr>
+              <td><h3>釣行場所</h3></td>
+              <td>
+                <div class="map">
+                  <div id="map" style='width:600px; height:400px;'>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <tr>
                 <td><label for="その他">その他</label></td>
                 <td><%= @catch.comment %></td>
-                </tr>
+              </tr>
                 <td>投稿を編集</td>
                 <td><%= link_to "編集", edit_public_catch_path(@catch.id) %></td>
-                </tr>
-            </table>
+            </tr>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -70,10 +78,12 @@
             <% end %>
         </table>
         <div>
+            <p>
             <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>
             <%= f.text_area :comment, rows: '5',cols: '60', placeholder: "コメントをここに" %><br>
             <%= f.submit "送信する" %>
             <% end %>
+            </p>
         </div>
     </div>
 </div>

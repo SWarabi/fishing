@@ -3,7 +3,6 @@
   <div class='container'>
     <h1>
       <%= image_tag 'fishing.png', size: "100x100" %>投稿一覧
-      
     </h1>
   </div>
   <div class='back'>
@@ -11,8 +10,8 @@
     
     
     <div class=“row”>
-      <h4 class='text-right'>
-        <%= link_to "いいね順", public_favorites_path, class: "btn btn-dark btn-primary mb-3 botton" %>
+      <h4 class='text-right text-light'>
+        並び替え<%= link_to "いいね順", public_favorites_path, class: "btn btn-dark btn-primary mb-3 botton" %>
       </h4>
       <div class='mx-auto col-lg-12'>
         <table class = "table table-bordered back-table">
