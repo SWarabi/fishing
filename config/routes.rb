@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/followings'
+  get 'relationships/followers'
   root to: 'public/homes#top'
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admins/sessions"
@@ -23,7 +25,16 @@ Rails.application.routes.draw do
       resources :catch_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+    
+    resources :followers, only: :show
+    resources :followings, only: :show
+    
     resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      #フォローフォロワー
+      resource :relationships, only: [:create, :destroy]
+      #get 'followings' => 'relationships#followings', as: 'followings'
+      #get 'followers' => 'relationships#followers', as: 'followers'
+      
       member do
         get :favorites
       end

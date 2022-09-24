@@ -28,3 +28,14 @@
   padding-top: 10px;
   background-color: #00bfff;
 }
+.position{
+  position: relative;
+  position: absolute;
+    top: 70px;
+    left: 50%;
+    margin: 0 0 0 -53px;
+    width: 160px;
+    height: 160px;
+    z-index: 2;
+
+}

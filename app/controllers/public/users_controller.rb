@@ -19,6 +19,7 @@ class Public::UsersController < ApplicationController
   end
   
   def index
+    @users = User.all
   end
   
   def update
@@ -28,6 +29,11 @@ class Public::UsersController < ApplicationController
     else
     render 'edit'
     end
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @users = User.all
   end
   
   def favorites
