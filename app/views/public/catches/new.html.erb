@@ -19,52 +19,63 @@
     <div class='mx-auto col-lg-12 back-table'>
       <%= form_with model: @catch, url:'/public/catches' do |f| %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <p>
-        釣果
-        <%= f.text_field :fish %><br>
-      </p>
-      <p>
-        <%= f.file_field :image, accept: "image/*" %><br>
-      </p>
-      <p>
-        道具
-        <%= f.text_field :gear %><br>
-      </p>
-      <p>
-        場所
-        <%= f.text_field :point %><br>
-      </p>
-      <p>
-        日にち
-        <%= f.date_field :day %><br>
-      </p>
-      <p>
-        時間
-        <%= f.time_field :time %><br>
-      </p>
-      <p>
-        その他<br>
-        <%= f.text_area :comment %>
-      </p>
-      <!-- 追加部分 -->
-      <h3>釣行場所</h3>
-      <%= f.label :address, '場所' %>
-      <p><%= f.text_field :address, class: 'form-control' %></p>
-      <div class="map">
-        <!-- 地名入力用のinputを追加 -->
-        <input id="address" type="textbox" value="東京">
-        <!-- buttonをクリックしたらcodeAddressを実行　-->
-        <input type="button" value="検索" onclick="codeAddress()">
-        <p>
-        <div id="map" style='width:800px; height:600px;'>
-        
-        </div>
-        </p>
-      </div>
       
-      <%= f.submit '投稿',style: 'width:200px; height:40px; ,my-30px;' %>
-      </p>
-      <% end %>
+      <table class = "table table-bordered back-table">
+        <tr>
+          <td>釣果</td>
+          <td><%= f.text_field :fish %></td>
+        </tr>
+        <tr>
+          <td>画像</td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td>道具</td>
+          <td><%= f.text_field :gear %></td>
+        </tr>
+        <tr>
+          <td>場所</td>
+          <td><%= f.text_field :point %></td>
+        </tr>
+        <tr>
+          <td>日にち</td>
+          <td><%= f.date_field :day %></td>
+        </tr>
+        <tr>
+          <td>時間</td>
+          <td><%= f.time_field :time %></td>
+        </tr>
+        <tr>
+          <td>その他</td>
+          <td><%= f.text_area :comment %></td>
+        </tr>
+        <!-- 追加部分 -->
+        <tr>
+          <td><h3><%= f.label :address, '釣行場所' %></h3></td>
+          <td><%= f.text_field :address, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <div class="map">
+            <td>
+            <!-- 地名入力用のinputを追加 -->
+            <input id="address" type="textbox" value="東京">
+            <!-- buttonをクリックしたらcodeAddressを実行　-->
+            <input type="button" value="検索" onclick="codeAddress()">
+            </td>
+            <td>
+              <div id="map" style='width:800px; height:600px;'>
+              </div>
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit '投稿',style: 'width:200px; height:40px; ,my-30px;' %>
+            <% end %>
+          </td>
+          
+      </table>
     </die>
   </die>
 </die>

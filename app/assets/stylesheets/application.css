@@ -37,5 +37,7 @@
     width: 160px;
     height: 160px;
     z-index: 2;
-
+}
+.botton{
+  width: 24%;
 }
