@@ -47,8 +47,11 @@
             </td>
             <td><%= catch.gear %></td>
             <td><%= catch.point %></td>
-            <td><%= catch.day.strftime('%Y年%m月%d日') %>
-            <%= catch.time.strftime('%H時%M分') %>
+            <td>
+              <% if catch.day %>
+              <%= catch.day.strftime('%Y年%m月%d日') %>
+              <%= catch.time.strftime('%H時%M分') %>
+              <% end %>
             </td>
             <td id="favorite_buttons_<%= catch.id %>">
               <%= render "public/favorites/favorites", catch: catch %>

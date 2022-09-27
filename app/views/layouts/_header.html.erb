@@ -5,7 +5,7 @@
 		      <% if user_signed_in? %>
 		      ログインユーザー:<%=link_to current_user.name, public_user_path(current_user) %>
 		      <% elsif admin_signed_in? %>
-		      検索
+		      管理者検索
 		      <%= render 'admins/searchs/form', class:"text-right" %>
           <% end %>
           <div class="text-nowrap border-white d-flex text-right mx-auto col-lg-12" style="color:black;">
@@ -21,12 +21,7 @@
 <%= image_tag 'maguro.png', size: "100x100" %>
 </div>
   <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:black;">
-    <!--<div class="text-left">-->
-         <%#= image_tag 'maguro.png', size: "50x50" %>
-    <!--</div>-->
     <div class="container">
-      <!--<a class="navbar-brand" href="/">-->
-        <%#= image_tag'nagnocake.jpg', size:"100x100" %>
       </a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

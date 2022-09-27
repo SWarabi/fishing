@@ -1,8 +1,7 @@
+
 <main class='background'>
   <div class='container'>
-    <h1>
-      <%= image_tag 'fishing.png', size: "100x100" %>投稿一覧
-    </h1>
+    <h1><%= image_tag 'fishing.png', size: "100x100" %>投稿一覧</h1>
   </div>
   <div class='back'>
   <div class='container'>
@@ -12,7 +11,7 @@
       <h4 class='text-right text-light'>
         <div class="dropdown">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            投稿順
+            古い順
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="catches">投稿順</a>
@@ -50,10 +49,8 @@
             <td><%= catch.gear %></td>
             <td><%= catch.point %></td>
             <td>
-              <% if catch.day %>
               <%= catch.day.strftime('%Y年%m月%d日') %>
               <%= catch.time.strftime('%H時%M分') %>
-              <% end %>
             </td>
             <td id="favorite_buttons_<%= catch.id %>">
               <%= render "public/favorites/favorites", catch: catch %>

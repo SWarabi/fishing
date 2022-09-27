@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
     
     resources :favorites, only: [:index]
+    resources :oldes, only: [:index]
+    resources :drafts, only: [:index, :edit, :create]
     
     resources :followers, only: :show
     resources :followings, only: :show

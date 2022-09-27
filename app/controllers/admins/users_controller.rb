@@ -17,7 +17,7 @@ class Admins::UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])  # データ（レコード）を1件取得
     user.destroy  # データ（レコード）を削除
-    redirect_to '/admins_user'  # 投稿一覧画面へリダイレクト  
+    redirect_to admins_users_path  # 投稿一覧画面へリダイレクト  
   end
   
   def update

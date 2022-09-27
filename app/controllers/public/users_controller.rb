@@ -1,13 +1,12 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @catches = @user.catches 
+    @catches = @user.catches.where(is_draft: false)
   end
   
   def edit
     @user = User.find(params[:id])
     if @user.email == 'guest@example.com'
-      #byebug
       redirect_to public_user_path(current_user)
       return
     end

@@ -8,6 +8,7 @@ class CreateCatches < ActiveRecord::Migration[6.1]
       t.datetime :time
       t.text :comment
       t.integer :user_id
+      t.boolean :is_draft, null: false, default: true
       
       t.string :address
       t.float :latitude

@@ -60,7 +60,8 @@
               </tr>
               <tr>
               <td>
-                <%= f.submit '保存', :name => 'update_catch' %>
+                <%= f.submit '投稿', :name => 'publicize_draft' %>
+                 <%= f.submit '下書きに保存', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
               </td>
               <td>
                 <% if @catch.user == current_user %>
@@ -85,11 +86,11 @@ function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center:  {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+  center:  {lat: <%= @catch.latitude.nil? ? 35.681236 : @catch.latitude %>, lng: <%= @catch.longitude.nil? ? 139.767125 : @catch.longitude %> },
   zoom: 15
   });
   let marker = new google.maps.Marker({
-        position: {lat: <%= @catch.latitude %>, lng: <%= @catch.longitude %> },
+        position: {lat: <%= @catch.latitude.nil? ? 35.681236 : @catch.latitude %>, lng: <%= @catch.longitude.nil? ? 139.767125 : @catch.longitude %> },
         map: map
     })
 }

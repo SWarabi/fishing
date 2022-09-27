@@ -9,7 +9,16 @@
     
     <div class=“row”>
       <h4 class='text-right text-light'>
-        並び替え<%= link_to "投稿順", public_catches_path, class: "btn btn-dark btn-primary mb-3 botton" %>
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            いいね順
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="catches">投稿順</a>
+            <a class="dropdown-item" href="oldes">古い順</a>
+            <a class="dropdown-item" href="favorites">いいね順</a>
+          </div>
+        </div>
       </h4>
       <div class='mx-auto col-lg-12'>
         <table class = "table table-bordered back-table">

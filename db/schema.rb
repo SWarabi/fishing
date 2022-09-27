@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2022_09_23_055536) do
     t.datetime "time"
     t.text "comment"
     t.integer "user_id"
+    t.boolean "is_draft", default: true, null: false
     t.string "address"
     t.float "latitude"
     t.float "longitude"

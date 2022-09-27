@@ -25,8 +25,10 @@
         <td><%= catch.gear %></td>
         <td><%= catch.point %></td>
         <td>
+          <% if catch.day %>
             <%= catch.day.strftime('%Y年%m月%d日') %>
             <%= catch.time.strftime('%H時%M分') %>
+          <% end %>
           </td>
         <td><%= link_to "詳細", public_catch_path(catch) %></td>
         <% if catch.user == current_user %>

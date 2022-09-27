@@ -37,8 +37,10 @@
             <tr>
               <td><label for="日にち・時間">日にち・時間</label></td>
               <td>
+                <% if @catch.day %>
                 <%= @catch.day %>
                 <%= @catch.time.strftime('%H時%M分')  %>
+                <% end %>
               </td>
             </tr>
             <tr>
@@ -69,6 +71,7 @@
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-14'>
+      <p>
         <table class = "table table-bordered">
             <% @catch.catch_comments.each do |catch_comment| %>
             <tr>
@@ -77,6 +80,7 @@
             </tr>
             <% end %>
         </table>
+        </p>
         <div>
             <p>
             <%= form_with model: [:public , @catch, @catch_comment]  do |f| %>

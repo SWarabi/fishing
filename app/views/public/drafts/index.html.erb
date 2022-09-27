@@ -1,43 +1,33 @@
-<main class='background'>
+<main>
   <div class='container'>
-    <h1>
-      <%= image_tag 'fishing.png', size: "100x100" %>投稿一覧
-    </h1>
+  <h1><%= image_tag 'fishing.png', size: "100x100" %>下書き一覧</h1>
   </div>
   <div class='back'>
   <div class='container'>
     
     
+  </div>
+  
+  <div class='container'>
     <div class=“row”>
-      <h4 class='text-right text-light'>
-        <div class="dropdown">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            投稿順
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="catches">投稿順</a>
-            <a class="dropdown-item" href="oldes">古い順</a>
-            <a class="dropdown-item" href="favorites">いいね順</a>
-          </div>
-        </div>
-      </h4>
       <div class='mx-auto col-lg-12'>
+        
         <table class = "table table-bordered back-table">
           <thead>
-            <tr>
+            <tr align="center" valign="middle">
               <th>名前</th>
               <th>釣果</th>
               <th>道具</th>
               <th>場所</th>
               <th>日時</th>
-              <th>いいね</th>
+              
               <th>詳細</th>
             </tr>
           </thead>
           
           <% @catches.each do |catch| %>
           <tr align="center" valign="middle">
-            <td><%= catch.user.name %></td>
+            <td><%= @user.name %></td>
             <td>
             <% if catch.image.attached? %>
             <%= image_tag catch.image, size: "200x200" %>
@@ -55,16 +45,18 @@
               <%= catch.time.strftime('%H時%M分') %>
               <% end %>
             </td>
-            <td id="favorite_buttons_<%= catch.id %>">
-              <%= render "public/favorites/favorites", catch: catch %>
-            </td>
-            <td><%= link_to "詳細", public_catch_path(catch.id) %></td>
+            
+            <td><%= link_to "詳細", edit_public_draft_path(catch.id) %></td>
+            <%# if catch.comment == true %>
+            <%#= catch.comment %>
+            <%# else %>
+            <%#= "コメントなし" %>
+            <%# end %>
           </tr>
-          
           <% end %>
         </table>
-      </div>
-    </div>
+      </die>
+    </die>
+  </die>
   </div>
-  <%= paginate @catches %>
 </main>

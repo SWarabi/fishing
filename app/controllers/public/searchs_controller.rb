@@ -26,16 +26,16 @@ class Public::SearchsController < ApplicationController
     # 選択したモデルがcatchだったら
     elsif model == 'fish'
       if method == 'perfect'
-        Catch.where(fish: content)
+        Catch.where(is_draft: false).where(fish: content)
       else
-        Catch.where('fish LIKE ?', '%'+content+'%')
+        Catch.where(is_draft: false).where('fish LIKE ?', '%'+content+'%')
       end
     
     elsif model == 'address'
       if method == 'perfect'
-        Catch.where(address: content)
+        Catch.where(is_draft: false).where(address: content)
       else
-        Catch.where('address LIKE ?', '%'+content+'%')
+        Catch.where(is_draft: false).where('address LIKE ?', '%'+content+'%')
       end
     end
   end
