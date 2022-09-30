@@ -49,6 +49,9 @@
             <%= link_to "釣果新規投稿", new_public_catch_path ,class: 'nav-link text-nowrap text-light border border-white rounded mr-3' %>
           </li>
           <li>
+            <%= link_to "下書き", public_drafts_path, class: 'nav-link text-nowrap text-light border border-white rounded mr-3' %>
+          </li>
+          <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-nowrap text-light border border-white rounded mr-3' %>
           </li>
           <!--adminログイン後のヘッダー-->
