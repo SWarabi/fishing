@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   namespace :public do
     # resources :fishings
+    resources :notifications, only: :index
     get "/unsubscribe"=>"users#unsubscribe"
     get '/search', to: 'searchs#search'
     patch "/withdrawal"=>"users#withdrawal"

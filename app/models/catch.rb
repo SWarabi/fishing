@@ -8,7 +8,8 @@ class Catch < ApplicationRecord
   geocoded_by :address;
   after_validation :geocode
   
-  temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+  def create_notification_like!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -22,6 +23,7 @@ class Catch < ApplicationRecord
       end
       notification.save if notification.valid?
     end
+  end
   
   
   with_options presence: true, on: :publicize do
