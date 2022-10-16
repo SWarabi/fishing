@@ -3,7 +3,7 @@ class Public::FavoritesController < ApplicationController
     @catch = Catch.find(params[:catch_id])
     # catch = current_user.favorites.new(catch_id: @catch.id)
     current_user.favorites.find_or_create_by(catch_id: @catch.id)
-    post.create_notification_like!(current_user)
+    @catch.create_notification_like!(current_user)
     
     # catch.save
   end
