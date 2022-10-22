@@ -39,9 +39,13 @@
             <td><%= @user.name %></td>
             <td>
             <% if catch.image.attached? %>
+            <%= link_to public_catch_path(catch.id)do %>
             <%= image_tag catch.image, size: "200x200" %>
+            <% end %>
             <% else %>
+            <%= link_to public_catch_path(catch.id)do %>
             <%= image_tag 'no_image.jpg', size: "200x200" %>
+            <% end %>
             <% end %>
             <br>
             <%= catch.fish %>
