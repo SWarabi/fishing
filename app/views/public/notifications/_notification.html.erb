@@ -18,8 +18,8 @@
           <% link_to 'あなたの投稿', public_catch_path(notification.catch), style: "font-weight: bold;" %>
           <%= "にいいねしました" %>
         <% when 'comment' then %>
-          <% if notification.post.user_id == visited.id %>
-            <%= link_to "あなたの投稿", notification.catch, style: "font-weight: bold;" %>
+          <% if notification.catch.user_id == visited.id %>
+            <%= link_to "あなたの投稿", public_catch_path(notification.catch), style: "font-weight: bold;" %>
           <% else %>
             <span>
               <%= link_to post_path(notification.catch) do %>

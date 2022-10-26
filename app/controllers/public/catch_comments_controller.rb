@@ -4,7 +4,7 @@ class Public::CatchCommentsController < ApplicationController
     comment = current_user.catch_comments.new(catch_comment_params)
     comment.catch_id = catch.id
     comment.save
-    @post.create_notification_comment!(current_user, @comment.id)
+    catch.create_notification_comment!(current_user, comment.id)
     redirect_to public_catch_path(catch)
   end
   
