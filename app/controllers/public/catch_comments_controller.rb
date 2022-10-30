@@ -9,10 +9,14 @@ class Public::CatchCommentsController < ApplicationController
   end
   
   def destroy
-    @catch = Catch.find(params[:catch_id])
-    comment = CatchComment.find_by(catch_id: params[:catch_id], id: params[:id])
-    comment.catch_id = @catch.id
-    comment.destroy
+    user = User.find(params[:id])
+    catch = Catch.find(params[:id])
+    if catch.user_id == current_user.id
+      @catch = Catch.find(params[:catch_id])
+      comment = CatchComment.find_by(catch_id: params[:catch_id], id: params[:id])
+      comment.catch_id = @catch.id
+      comment.destroy
+    end
   end
 
   private

@@ -76,27 +76,21 @@ class Public::CatchesController < ApplicationController
     end
   end
   
-  
-  
-  # def update
-  #   catch = Catch.find(params[:id])
-  #   catch.update(catch_params)
-  #   redirect_to public_catch_path(catch.id)  
-  # end
-  
   def map
-  # respond_to以下の記述によって、
-  # remote: trueのアクセスに対して、
-  # map.js.erbが変えるようになります。
     respond_to do |format|
       format.js
     end
   end
   
   def destroy
+    user = User.find(params[:id])
     catch = Catch.find(params[:id])
+    if catch.user_id == current_user.id
     catch.destroy
     redirect_to public_user_path(current_user.id)
+    else
+      redirect_to public_user_path(current_user.id)
+    end
   end
   
   private
@@ -104,14 +98,3 @@ class Public::CatchesController < ApplicationController
     params.require(:catch).permit(:image, :fish, :point, :gear, :day, :time, :address, :comment, :user_id)  
   end
 end
-
-# map = Map.new(map_params)
-#     if map.save
-      
-#       redirect_to :action => "/public/catches"
-#     else
-#       redirect_to :action => "/public/catches"
-#     end
-#     def map_params
-#     params.require(:map).permit(:address, :latitude, :longitude)
-#   end
