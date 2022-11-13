@@ -44,7 +44,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :restaurants, only: [:index, :show] 
+  # resources :restaurants, only: [:index, :show] 
   namespace :admins do
     get '/search', to: 'searchs#search'
     resources :users,only: [:new, :create, :index, :show, :destroy, :edit, :update]

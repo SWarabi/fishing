@@ -1,6 +1,6 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :if_not_admin
-  before_action :set_restaurant, only: [:show, :edit, :destroy]
+  before_action :set_restaurant, only: [:new, :create, :index, :show, :destroy, :edit, :update]
 
   private
   def if_not_admin
