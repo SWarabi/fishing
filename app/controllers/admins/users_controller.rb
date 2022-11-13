@@ -1,6 +1,6 @@
 class Admins::UsersController < ApplicationController
-  before_action :if_not_admin
-  before_action :set_restaurant, only: [:show, :edit, :destroy]
+  # before_action :if_not_admin
+  # before_action :set_restaurant, only: [:show, :edit, :destroy]
   def show
     @user = User.find(params[:id])
     @catches = @user.catches 
@@ -36,12 +36,12 @@ class Admins::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :is_deleted)
   end
   
-   private
-  def if_not_admin
-    redirect_to root_path unless current_user.admin?
-  end
+  # private
+  # def if_not_admin
+  #   redirect_to root_path unless current_user.admin?
+  # end
 
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
+  # def set_restaurant
+  #   @restaurant = Restaurant.find(params[:id])
+  # end
 end
