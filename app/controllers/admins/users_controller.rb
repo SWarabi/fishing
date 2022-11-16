@@ -36,7 +36,7 @@ class Admins::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :is_deleted)
   end
   
-  # private
+  
   # def if_not_admin
   #   redirect_to root_path unless current_user.admin?
   # end
