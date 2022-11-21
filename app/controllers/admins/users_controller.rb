@@ -1,5 +1,5 @@
 class Admins::UsersController < ApplicationController
-  # before_action :if_not_admin
+  before_action :if_not_admin
   # before_action :set_restaurant, only: [:show, :edit, :destroy]
   def show
     @user = User.find(params[:id])
@@ -39,6 +39,7 @@ class Admins::UsersController < ApplicationController
   
   # def if_not_admin
   #   redirect_to root_path unless current_user.admin?
+  # Catch.where(admin: true,user_id: @user).page(params[:page]).order(created_at: :desc)
   # end
 
   # def set_restaurant
