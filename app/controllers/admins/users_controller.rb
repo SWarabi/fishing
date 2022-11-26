@@ -36,7 +36,7 @@ class Admins::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :is_deleted)
   end
   
-  
+  #問題点
   # def if_not_admin
   #   redirect_to root_path unless current_user.admin?
   # Catch.where(admin: true,user_id: @user).page(params[:page]).order(created_at: :desc)
