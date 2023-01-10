@@ -30,6 +30,7 @@
             <%= catch.time.strftime('%H時%M分') %>
           <% end %>
           </td>
+          <!--リンク遷移-->
         <td><%= link_to "詳細", public_catch_path(catch) %></td>
         <% if catch.user == current_user %>
           <td><%= link_to "編集", edit_public_catch_path(catch) %></td>
